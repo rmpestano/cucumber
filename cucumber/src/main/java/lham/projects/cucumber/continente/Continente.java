@@ -19,7 +19,7 @@ public class Continente extends AbstractEntity<String> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "ID", nullable = false, length = 20)
+	@Column(name = "NOME", nullable = false, length = 20)
 	@NotBlank
 	private String nome;
 

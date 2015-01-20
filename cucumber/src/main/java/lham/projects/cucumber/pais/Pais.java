@@ -2,15 +2,19 @@ package lham.projects.cucumber.pais;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lham.projects.cucumber.continente.Continente;
 import lham.projects.cucumber.infra.AbstractEntity;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "PAIS")
@@ -20,11 +24,13 @@ public class Pais extends AbstractEntity<String> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "ID", nullable = false, length = 60)
+	@Column(name = "NOME", nullable = false, length = 60)
 	@NotBlank
 	private String nome;
 
-	@Column(name = "CONTINENTE", nullable = false)
+	@JoinColumn(name = "CONTINENTE", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@NotNull
 	private Continente continente;
 
 	public String getNome() {
