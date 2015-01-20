@@ -41,3 +41,4 @@ public class Continente extends AbstractEntity<String> {
 		this.setNome(primaryKey);
 	}
 }
+ 
