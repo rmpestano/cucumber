@@ -4,8 +4,8 @@ import lham.projects.cucumber.test.BaseIT;
 
 public class ContinenteContext extends BaseIT {
 	
-	private static ContinenteBD continenteBD;
-	private static ContinenteRN continenteRN;
+	protected static ContinenteBD continenteBD;
+	protected static ContinenteRN continenteRN;
 	
 	protected final void iniciarCenario() {
         super.startConnection();
