@@ -37,4 +37,36 @@ public class RegiaoPK implements Serializable {
 		this.pais = pais;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((nomeRegiao == null) ? 0 : nomeRegiao.hashCode());
+		result = prime * result + ((pais == null) ? 0 : pais.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RegiaoPK other = (RegiaoPK) obj;
+		if (nomeRegiao == null) {
+			if (other.nomeRegiao != null)
+				return false;
+		} else if (!nomeRegiao.equals(other.nomeRegiao))
+			return false;
+		if (pais == null) {
+			if (other.pais != null)
+				return false;
+		} else if (!pais.equals(other.pais))
+			return false;
+		return true;
+	}
+
 }
