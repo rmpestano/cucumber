@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import lham.projects.cucumber.infra.AbstractEntity;
 
-@Entity
+@Entity 
 @Table(name = "CONTINENTE")
 @NamedQueries(value = { @NamedQuery(name = "Continente.findByPk", query = "SELECT c FROM Continente c WHERE c.nome = :pk") })
 public class Continente extends AbstractEntity<String> {
