@@ -51,3 +51,4 @@ public class Pais extends AbstractEntity<String> {
 		this.setNome(primaryKey);
 	}
 }
+
