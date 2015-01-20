@@ -31,3 +31,4 @@ public class AppSettingsBean {
         return APP_LAYOUT;
     }
 }
+
