@@ -17,7 +17,7 @@ import lham.projects.cucumber.infra.AbstractEntity;
 public class Continente extends AbstractEntity<String> {
 
 	private static final long serialVersionUID = 1L;
-
+ 
 	@Id
 	@Column(name = "NOME", nullable = false, length = 20)
 	@NotBlank
