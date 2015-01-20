@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
 
 import lham.projects.cucumber.infra.AbstractEntity;
-
+ 
 @Entity 
 @Table(name = "CONTINENTE")
 @NamedQueries(value = { @NamedQuery(name = "Continente.findByPk", query = "SELECT c FROM Continente c WHERE c.nome = :pk") })
