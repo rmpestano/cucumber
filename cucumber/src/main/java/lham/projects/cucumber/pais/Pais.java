@@ -26,7 +26,7 @@ public class Pais extends AbstractEntity<String> {
 	@Id
 	@Column(name = "NOME", nullable = false, length = 60)
 	@NotBlank
-	private String nome;
+	private String nome; 
 
 	@JoinColumn(name = "CONTINENTE", nullable = false)
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -7,7 +7,7 @@ import br.com.six2six.fixturefactory.Rule;
 
 public class PaisFactory {
 
-	public Pais criarPaises(String template) {
+	public Pais criarPais(String template) { 
 		this.createTeamFixture();
 		return Fixture.from(Pais.class).gimme(template);
 	}
