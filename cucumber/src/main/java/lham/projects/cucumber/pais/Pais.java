@@ -32,6 +32,17 @@ public class Pais extends AbstractEntity<String> {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NotNull
 	private Continente continente;
+	
+	@Column(name = "CODIGO", nullable = false, length = 3, unique = true)
+	private String codigo;
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getNome() {
 		return nome;
