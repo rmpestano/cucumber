@@ -32,7 +32,7 @@ public abstract class AbstractEntity<K> implements Serializable {
 	public abstract void setPrimaryKey(final K primaryKey);
 
 	@Transient
-	private PropLista propLista = new PropLista();
+	private PropLista propLista = new PropLista(0, 2);
 
 	protected PropLista getPropLista() {
 		return propLista;

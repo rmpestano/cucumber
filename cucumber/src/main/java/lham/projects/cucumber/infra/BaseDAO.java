@@ -55,10 +55,13 @@ public class BaseDAO<E extends AbstractEntity<K>, K> {
         final DetachedCriteria detachedCriteria = DetachedCriteria.forClass(entityClass);
         
         detachedCriteria.add(Example.create(entity).enableLike(MatchMode.ANYWHERE).ignoreCase());
-        detachedCriteria.addOrder(Order.asc(entityManager.unwrap(Session.class).getSessionFactory().getClassMetadata(entityClass).getIdentifierPropertyName()));
+        
+        this.addOrder(entity, detachedCriteria);
         
         final Criteria criteria = detachedCriteria.getExecutableCriteria(entityManager.unwrap(Session.class));
-        
+        criteria.setFirstResult(entity.getPropLista().getInicio());
+		criteria.setMaxResults(entity.getPropLista().getTamanho());
+		
         return criteria.list();
     }
 
@@ -119,5 +122,28 @@ public class BaseDAO<E extends AbstractEntity<K>, K> {
         namedQuery.append(entityClass.getSimpleName()).append(".").append(querySuffix);
 
         return namedQuery.toString();
+    }
+    
+    
+    public void addOrder(E entity, DetachedCriteria detachedCriteria) {
+        boolean incluiuOrdem = false;
+    	final List<Ordem> ordenacao = entity.getPropLista().getOrdem();
+    	
+        for (Ordem ordem : ordenacao) {
+        	
+        	if(ordem.getPropriedade() != null){
+        	    incluiuOrdem = true;
+        	    
+        		if (ordem.isAsc()) {
+        			detachedCriteria.addOrder(Order.asc(ordem.getPropriedade()));
+        		} else {
+        			detachedCriteria.addOrder(Order.desc(ordem.getPropriedade()));
+        		}
+        	}
+		}
+        
+        if (incluiuOrdem) {
+        	detachedCriteria.addOrder(Order.asc(entityManager.unwrap(Session.class).getSessionFactory().getClassMetadata(entityClass).getIdentifierPropertyName())); 
+        }
     }
 }

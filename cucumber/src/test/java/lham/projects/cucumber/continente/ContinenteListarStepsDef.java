@@ -16,7 +16,7 @@ public class ContinenteListarStepsDef extends ContinenteContext {
 	private Continente filtro;
 	private int continentesCadastrados;
 	private List<Continente> resposta;
-
+	
 	/*
 	 * --------------------------------- Configuração
 	 */
@@ -63,6 +63,7 @@ public class ContinenteListarStepsDef extends ContinenteContext {
 
 	@Entao("^devo receber uma pagina da listagem total$")
 	public void devoReceberUmaPaginaDaListagemTotal() throws Throwable {
+		final int tamPagina = 2;
 		assertTrue("Devo receber uma pagina da listagem total.", resposta.size() == continentesCadastrados);
 	}
 
