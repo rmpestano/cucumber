@@ -14,7 +14,7 @@ import cucumber.api.java.pt.Quando;
 public class ContinenteListarStepsDef extends ContinenteContext {
 
 	private Continente filtro;
-	private int continentesCadastrados;
+	private long continentesCadastrados;
 	private List<Continente> resposta;
 	
 	/*
@@ -64,13 +64,13 @@ public class ContinenteListarStepsDef extends ContinenteContext {
 	@Entao("^devo receber uma pagina da listagem total$")
 	public void devoReceberUmaPaginaDaListagemTotal() throws Throwable {
 		final int tamPagina = 2;
-		assertTrue("Devo receber uma pagina da listagem total.", resposta.size() == continentesCadastrados);
+		assertTrue("Devo receber uma pagina da listagem total.", resposta.size() == tamPagina);
 	}
 
 	@Entao("^o numero total de continentes cadastrados$")
 	public void oNumeroTotalDeContinentesCadastrados() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		long tamTotal = continenteRN.count(filtro);
+		assertTrue("Devo receber uma pagina da listagem total.", tamTotal == continentesCadastrados);
 	}
 
 	@Entao("^devo receber uma listagem com os registros ordenados por nome de forma crescente$")

@@ -13,6 +13,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 
 /**
  * Classe base para as classes DAO do sistema.
@@ -107,7 +108,18 @@ public class BaseDAO<E extends AbstractEntity<K>, K> {
     public void setEntityManager(final EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-
+    
+    public long count(final E entity) {
+    	final DetachedCriteria detachedCriteria = DetachedCriteria.forClass(entityClass);
+        detachedCriteria.add(Example.create(entity).enableLike(MatchMode.ANYWHERE).ignoreCase());
+        
+    	final Criteria criteria = detachedCriteria.getExecutableCriteria(entityManager.unwrap(Session.class));
+        criteria.setProjection(Projections.count(entityManager.unwrap(Session.class).getSessionFactory().getClassMetadata(entityClass).getIdentifierPropertyName()));
+        
+        Long result = (Long) criteria.uniqueResult();
+        return result.longValue();
+    }
+    
     /**
      * Monta uma <i>named query</i> e a retorna.
      * 

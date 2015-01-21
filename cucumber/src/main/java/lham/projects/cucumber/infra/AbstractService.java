@@ -58,6 +58,10 @@ public abstract class AbstractService<E extends AbstractEntity<K>, K> implements
         return dao.insert(entity);
     }
 
+    public long count(final E entity) {
+    	return dao.count(entity);
+    }
+    
     /**
      * Define a classe <i>DAO</i> que será gerenciado pela classe de serviço.
      * 
