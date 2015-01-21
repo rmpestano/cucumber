@@ -147,9 +147,9 @@ public class BaseDAO<E extends AbstractEntity<K>, K> {
         	    incluiuOrdem = true;
         	    
         		if (ordem.isAsc()) {
-        			detachedCriteria.addOrder(Order.asc(ordem.getPropriedade()));
+        			detachedCriteria.addOrder(Order.asc(ordem.getPropriedade()).ignoreCase());
         		} else {
-        			detachedCriteria.addOrder(Order.desc(ordem.getPropriedade()));
+        			detachedCriteria.addOrder(Order.desc(ordem.getPropriedade()).ignoreCase());
         		}
         	}
 		}
