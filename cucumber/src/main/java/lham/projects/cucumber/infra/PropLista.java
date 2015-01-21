@@ -3,6 +3,7 @@ package lham.projects.cucumber.infra;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ public class PropLista implements Serializable {
 		super();
 		this.inicio = inicio;
 		this.tamanho = tamanho;
+		this.ordem = new LinkedList<>();
 	}
 
 	public PropLista() {
