@@ -14,6 +14,7 @@ import cucumber.api.java.pt.Quando;
 public class ContinenteListarStepsDef extends ContinenteContext {
 
 	private Continente filtro;
+	private int continentesCadastrados;
 	private List<Continente> resposta;
 
 	/*
@@ -51,20 +52,18 @@ public class ContinenteListarStepsDef extends ContinenteContext {
 
 	@Dado("^que existam registros cadastrados no banco$")
 	public void queExistamRegistrosCadastradosNoBanco() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		this.cadastrarContinentes();
 	}
 
 	@Dado("^nao passo filtro nenhum para a listagem$")
 	public void naoPassoFiltroNenhumParaAListagem() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		filtro = new Continente();
+		resposta = continenteRN.find(filtro);
 	}
 
 	@Entao("^devo receber uma pagina da listagem total$")
 	public void devoReceberUmaPaginaDaListagemTotal() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		assertTrue("Devo receber uma pagina da listagem total.", resposta.size() == continentesCadastrados);
 	}
 
 	@Entao("^o numero total de continentes cadastrados$")
@@ -80,4 +79,18 @@ public class ContinenteListarStepsDef extends ContinenteContext {
 		throw new PendingException();
 	}
 
+	/*
+	 * --------------------------------- métodos privados
+	 */
+
+	private void cadastrarContinentes() {
+		continentesCadastrados = 6;
+
+		super.cadastrarContinente("oce");
+		super.cadastrarContinente("afr");
+		super.cadastrarContinente("ams");
+		super.cadastrarContinente("eur");
+		super.cadastrarContinente("amn");
+		super.cadastrarContinente("asi");
+	}
 }

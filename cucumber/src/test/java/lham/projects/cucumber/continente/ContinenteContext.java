@@ -11,6 +11,11 @@ public class ContinenteContext extends BaseIT {
         super.startConnection();
         this.prepararCenario();
     }
+	
+	protected void cadastrarContinente(String template) {
+        Continente continente = new ContinenteFactory().criarContinente(template);
+        continenteRN.insert(continente);
+    }
 
     private void prepararCenario() {
     	continenteBD = new ContinenteBD();
