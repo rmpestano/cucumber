@@ -7,6 +7,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.NotBlank;
 
 import lham.projects.cucumber.infra.AbstractEntity;
@@ -14,7 +15,7 @@ import lham.projects.cucumber.infra.AbstractEntity;
 @Entity
 @Table(name = "CONTINENTE")
 @NamedQueries(value = { @NamedQuery(name = "Continente.findByPk", query = "SELECT c FROM Continente c WHERE c.nome = :pk") })
-public class Continente extends AbstractEntity<String> {
+public class Continente extends AbstractEntity<String> implements Comparable<Continente> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -75,5 +76,13 @@ public class Continente extends AbstractEntity<String> {
 		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Continente continente) {
+		String thisNome = StringUtils.stripAccents(this.nome);
+		String paramNome = StringUtils.stripAccents(continente.getNome());
+		
+		return thisNome.toLowerCase().compareTo(paramNome.toLowerCase());
 	}
 }
