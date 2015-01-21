@@ -52,4 +52,8 @@ public class PropLista implements Serializable {
 		return ordem;
 	}
 
+	public void addOrdem(Ordem ordem) {
+		this.ordem.add(ordem);
+	}
+	
 }

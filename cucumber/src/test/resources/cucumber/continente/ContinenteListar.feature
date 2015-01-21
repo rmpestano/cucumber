@@ -20,5 +20,5 @@ Funcionalidade: Listar Continentes
 
   Cenario: Deve retornar lista ordenada de forma crescente
     Dado que existam registros cadastrados no banco
-	Quando acesso a listagem de continentes
+	Quando acesso a listagem de continentes informando ordenacao pelo campo nome
     Entao devo receber uma listagem com os registros ordenados por nome de forma crescente

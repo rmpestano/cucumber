@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import cucumber.api.PendingException;
+import lham.projects.cucumber.infra.Ordem;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.pt.Dado;
@@ -52,12 +52,12 @@ public class ContinenteListarStepsDef extends ContinenteContext {
 
 	@Dado("^que existam registros cadastrados no banco$")
 	public void queExistamRegistrosCadastradosNoBanco() throws Throwable {
+		filtro = new Continente();
 		this.cadastrarContinentes();
 	}
 
 	@Dado("^nao passo filtro nenhum para a listagem$")
 	public void naoPassoFiltroNenhumParaAListagem() throws Throwable {
-		filtro = new Continente();
 		resposta = continenteRN.find(filtro);
 	}
 
@@ -72,12 +72,35 @@ public class ContinenteListarStepsDef extends ContinenteContext {
 		long tamTotal = continenteRN.count(filtro);
 		assertTrue("Devo receber uma pagina da listagem total.", tamTotal == continentesCadastrados);
 	}
+	
+	@Quando("^acesso a listagem de continentes informando ordenacao pelo campo nome$")
+	public void acessoAListagemDeContinentesInformandoOrdenacaoPeloCampoNome() throws Throwable {
+		Ordem ordem = new Ordem("nome");
+		filtro.getPropLista().addOrdem(ordem);
+		filtro.getPropLista().setTamanho(6);
+		
+		resposta = continenteRN.find(filtro);
+	}
 
 	@Entao("^devo receber uma listagem com os registros ordenados por nome de forma crescente$")
-	public void devoReceberUmaListagemComOsRegistrosOrdenadosPorNomeDeFormaCrescente()
-			throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+	public void devoReceberUmaListagemComOsRegistrosOrdenadosPorNomeDeFormaCrescente() throws Throwable {
+		boolean condicao = "África".equalsIgnoreCase(resposta.get(0).getNome());
+		assertTrue("Devo receber uma listagem com os registros ordenados por nome de forma crescente (get(0)).", condicao);
+		
+		condicao = "América do Norte".equalsIgnoreCase(resposta.get(1).getNome());
+		assertTrue("Devo receber uma listagem com os registros ordenados por nome de forma crescente (get(1)).", condicao);
+		
+		condicao = "América do Sul".equalsIgnoreCase(resposta.get(2).getNome());
+		assertTrue("Devo receber uma listagem com os registros ordenados por nome de forma crescente (get(2)).", condicao);
+		
+		condicao = "Ásia".equalsIgnoreCase(resposta.get(3).getNome());
+		assertTrue("Devo receber uma listagem com os registros ordenados por nome de forma crescente (get(3)).", condicao);
+		
+		condicao = "Europa".equalsIgnoreCase(resposta.get(4).getNome());
+		assertTrue("Devo receber uma listagem com os registros ordenados por nome de forma crescente (get(4)).", condicao);
+		
+		condicao = "Oceania".equalsIgnoreCase(resposta.get(5).getNome());
+		assertTrue("Devo receber uma listagem com os registros ordenados por nome de forma crescente (get(5)).", condicao);
 	}
 
 	/*

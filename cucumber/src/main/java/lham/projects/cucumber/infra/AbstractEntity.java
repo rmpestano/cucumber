@@ -34,11 +34,11 @@ public abstract class AbstractEntity<K> implements Serializable {
 	@Transient
 	private PropLista propLista = new PropLista(0, 2);
 
-	protected PropLista getPropLista() {
+	public PropLista getPropLista() {
 		return propLista;
 	}
 
-	protected void setPropLista(PropLista propLista) {
+	public void setPropLista(PropLista propLista) {
 		this.propLista = propLista;
 	}
 }
