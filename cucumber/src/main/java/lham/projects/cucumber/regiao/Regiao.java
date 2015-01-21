@@ -1,5 +1,6 @@
 package lham.projects.cucumber.regiao;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -17,6 +18,9 @@ public class Regiao extends AbstractEntity<RegiaoPK> {
 
 	@Id
 	private RegiaoPK id;
+	
+	@Column(name="area", nullable=false)
+	private Long area;
 
 	public RegiaoPK getId() {
 		return id;
