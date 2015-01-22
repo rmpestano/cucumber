@@ -14,8 +14,7 @@ access test output in /target/cucumber-report/feature-overview.html
 
  
 
-![General report](http://i.imgur.com/WYn7gJe.png)
+![General report](https://github.com/rmpestano/cucumber/blob/arquillian/report1.png?raw=true)
 
-![Detailed report](http://i.imgur.com/MDTJOUR.png)
+![Detailed report](https://github.com/rmpestano/cucumber/blob/arquillian/report2.png?raw=true)
 
- 
