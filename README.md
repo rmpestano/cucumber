@@ -12,10 +12,10 @@
 ## Test reports
 access test output in /target/cucumber-report/feature-overview.html 
 
-[img1]: http://i.imgur.com/WYn7gJe.png  "General report"
+ 
 
-[img2](http://i.imgur.com/WYn7gJe.png)
+![General report](http://i.imgur.com/WYn7gJe.png)
 
-[img1]: http://i.imgur.com/MDTJOUR.png  "Detailed report"
+![Detailed report](http://i.imgur.com/MDTJOUR.png)
 
-[img1](http://i.imgur.com/MDTJOUR.png)
+ 
