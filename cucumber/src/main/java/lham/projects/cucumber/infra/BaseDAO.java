@@ -1,19 +1,14 @@
 package lham.projects.cucumber.infra;
 
-import java.lang.reflect.ParameterizedType;
-import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Example;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
+import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 /**
  * Classe base para as classes DAO do sistema.
@@ -157,5 +152,9 @@ public class BaseDAO<E extends AbstractEntity<K>, K> {
         if (incluiuOrdem) {
         	detachedCriteria.addOrder(Order.asc(entityManager.unwrap(Session.class).getSessionFactory().getClassMetadata(entityClass).getIdentifierPropertyName())); 
         }
+    }
+
+    public void deleteAll() {
+        entityManager.createQuery("DELETE FROM " +entityClass.getSimpleName()).executeUpdate();
     }
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.TransactionAttribute;
 
 /**
  * Base para as classes de serviço do sistema.
@@ -71,5 +72,11 @@ public abstract class AbstractService<E extends AbstractEntity<K>, K> implements
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public void setDAO(final BaseDAO dao) {
         this.dao = dao;
+    }
+
+
+    @TransactionAttribute
+    public void deleteAll(){
+        dao.deleteAll();
     }
 }
